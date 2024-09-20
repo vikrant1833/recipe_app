@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Recipes</h2>
+<ul>
+    {% for recipe in recipes %}
+    <li>
+        <h3>{{ recipe.title }}</h3>
+        <p>{{ recipe.ingredients }}</p>
+        <p>{{ recipe.instructions }}</p>
+        <a href="{{ url_for('edit_recipe', id=recipe.id) }}">Edit</a>
+        <form action="{{ url_for('delete_recipe', id=recipe.id) }}" method="post">
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
